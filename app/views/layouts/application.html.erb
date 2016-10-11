@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JsExample</title>
+
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" >
+
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  </head>
+
+  <body>
+    <nav>
+      <div class="nav-wrapper container">
+        <%= link_to "Rails + Javascript & Ajax", root_path, class:"brand-logo" %>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><%= link_to 'things', things_path %></li>
+          <li><%= link_to 'stuff', stuffs_path %></li>
+        </ul>
+      </div>
+    </nav>
+
+      <div class="container">
+        <%= yield %>
+      </div>
+  </body>
+</html>

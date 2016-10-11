@@ -1,0 +1,7 @@
+// triggered when the update action completes
+// hide the detail view and update the item in the list - using the data-attribute that contains it's id
+// Alternatively we could redraw the whole list but this would be slower with many items
+$("#add_edit_thing").hide()
+$("tbody").find("[data-thing-id='" + <%= @thing.id %> + "']").replaceWith("<%= escape_javascript(render @thing) %>");
+
+Materialize.toast('Thing Updated!', 2000)

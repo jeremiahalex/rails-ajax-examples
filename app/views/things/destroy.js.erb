@@ -1,0 +1,7 @@
+// triggered when the destroy action completes
+// hide the detail view and remove the item from the list - using the data-attribute that contains it's id
+// Alternatively we could redraw the whole list but this would be slower with many items
+$("#show_thing").hide();
+$("tbody").find("[data-thing-id='" + <%= @removed_id %> + "']").remove();
+
+Materialize.toast('Thing Destroyed!', 2000)

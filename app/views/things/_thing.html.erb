@@ -1,0 +1,6 @@
+<!-- This is partial for rendering a single list item of a thing, it is used by the index action  -->
+<tr data-thing-id="<%= thing.id %>">
+  <td><%= thing.name %></td>
+  <td><%= thing.description %></td>
+  <td><%= link_to 'Show', thing, remote: true %></td>
+</tr>

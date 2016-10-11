@@ -1,0 +1,6 @@
+// rendered after the create action completes successfully
+// hide the form, append the new item (using the _thing partial) and notify the user with an alert
+$("#add_edit_thing").hide();
+$("<%= escape_javascript(render @thing) %>").appendTo("#list_things");
+
+Materialize.toast('New Thing Created!', 2000)

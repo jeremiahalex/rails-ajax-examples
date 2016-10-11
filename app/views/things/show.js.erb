@@ -1,0 +1,5 @@
+// this is triggered when an item is show (i.e. selected to show detailed view)
+// hide the form and show the detail instead
+$("#add_edit_thing").hide();
+$("#show_thing").show();
+$("#show_thing").html("<%= escape_javascript(render partial: 'detail', locals: { thing: @thing } ) %>");

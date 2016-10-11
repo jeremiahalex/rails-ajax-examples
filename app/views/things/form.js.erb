@@ -1,0 +1,18 @@
+// this form js is used by both new and edit actions.
+// hide the detail view and show the html form template instead
+$("#show_thing").hide();
+$("#add_edit_thing").show();
+
+$("#add_edit_thing").html("<%= escape_javascript(render partial: 'form', locals: { thing: @thing } ) %>");
+
+// remove any prior form error highlighting on the form
+$("input").removeClass('invalid')
+
+// if any errors then display as a popup and highlighted errored fields
+<% if @thing.errors.any? %>
+    Materialize.toast('<%= pluralize(@thing.errors.count, "error") %> prohibited this thing from being saved', 2000)
+    $(".field_with_errors").children('input').addClass('invalid')
+<% end %>
+
+// Tell materialize that the fields have changed
+Materialize.updateTextFields();

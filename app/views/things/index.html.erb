@@ -1,0 +1,27 @@
+<!-- The only HTML page we use for this resource, everything else is using js -->
+<%= link_to new_thing_path, remote: true, class: "right btn-floating btn-large waves-effect waves-light" do %>
+  <i class="material-icons">add</i>
+<% end %>
+<h1>All the Things</h1>
+<p>This approach uses js.erb files to insert snippets of javascript with each request. Each snippet is using erb and a partial to create new elements before appending them with jQuery.</p>
+<div class="divider"></div>
+<div id="add_edit_thing" class="section">
+</div>
+<div id="show_thing" class="section">
+</div>
+
+<div class="divider"></div>
+<div class="section">
+  <table class="highlight striped centered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th colspan="1"></th>
+      </tr>
+    </thead>
+    <tbody id="list_things">
+      <%= render @things %>
+    </tbody>
+  </table>
+</div>

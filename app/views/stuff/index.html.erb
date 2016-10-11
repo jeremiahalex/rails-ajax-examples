@@ -1,0 +1,51 @@
+<!-- The only HTML page we use for this resource, everystuff else is using js/json -->
+<h1>All the Stuff</h1>
+<p>This example uses AJAX to fetch JSON and updates the page with the results. It uses a predefined html-template-tag for each element.</p>
+<div class="divider"></div>
+
+<%= form_for(:stuff, remote: true, :html => { id:"add-stuff"} ) do |f| %>
+  <div class="input-field col s6">
+    <%= f.label :name %>
+    <%= f.text_field :name, :placeholder => 'What is this stuff called?', class: "validate", required: true %>
+  </div>
+
+  <div class="input-field col s6">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit nil, class: "btn waves-effect waves-light"  %>
+  </div>
+<% end %>
+
+<div class="divider"></div>
+<div class="section">
+  <table class="highlight striped centered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th colspan="1"></th>
+      </tr>
+    </thead>
+    <tbody id="list_stuffs">
+      <% @stuffs.each do |stuff| %>
+        <tr data-stuff-id="<%= stuff.id %>" class="a-stuff">
+          <td><%= stuff.name %></td>
+          <td><%= stuff.description %></td>
+          <td><%= link_to 'Delete', stuff, remote: true %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<!-- we use html template tags as a way of predefining out styles -->
+<template id="_stuff">
+  <tr class="a-stuff">
+    <td class="stuff-name"></td>
+    <td class="stuff-description"></td>
+    <td><%= link_to 'Delete', "#", remote: true, class: "link delete-stuff", method: :delete %></td>
+  </tr>
+</template>
